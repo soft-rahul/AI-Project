@@ -7,6 +7,7 @@ import { ResponsiveBarChart } from "../../components/dashboard/ResponsiveBarChar
 import { TabView } from "../../components/dashboard/TabView";
 import { RecentSales } from "../../components/dashboard/RecentSales";
 import { IChartDatum, TTab } from "../../interfaces";
+import { Shimmer } from "../../components/shimmer";
 
 const filters: CrudFilter[] = [
   {
@@ -107,6 +108,7 @@ export const Dashboard: React.FC = () => {
         newCustomers={newCustomers}
       />
       <TabView tabs={tabs} />
+      <Shimmer/>
       <RecentSales />
     </>
   );
