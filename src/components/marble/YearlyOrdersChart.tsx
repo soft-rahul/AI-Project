@@ -4,7 +4,6 @@ import {
   Line,
   XAxis,
   YAxis,
-  CartesianGrid,
   Tooltip,
   Legend,
   ResponsiveContainer,
@@ -12,6 +11,7 @@ import {
 
 import { MONTHS, ORDERS_YEAR_ONE, ORDERS_YEAR_TWO } from "../../constant/data";
 
+// Mockup Data for chart.
 const DATA = MONTHS.map((month, index) => {
   return {
     name: month,
@@ -19,6 +19,18 @@ const DATA = MONTHS.map((month, index) => {
     "2023": ORDERS_YEAR_TWO[index],
   };
 });
+
+const DataFormater = (number: number) => {
+  if (number > 1000000000) {
+    return (number / 1000000000).toString() + "B";
+  } else if (number > 1000000) {
+    return (number / 1000000).toString() + "M";
+  } else if (number > 1000) {
+    return (number / 1000).toString() + "K";
+  } else {
+    return number.toString();
+  }
+};
 
 export const YearlyOrders = () => {
   return (
@@ -35,18 +47,32 @@ export const YearlyOrders = () => {
             bottom: 5,
           }}
         >
-          <CartesianGrid strokeDasharray="3 3" />
           <XAxis dataKey="name" />
-          <YAxis />
-          <Tooltip />
-          <Legend />
-          <Line
-            type="monotone"
-            dataKey="2024"
-            stroke="#8884d8"
-            activeDot={{ r: 8 }}
+          <YAxis tickFormatter={DataFormater} />
+          <Tooltip
+            formatter={(value, name) => {
+              const formattedValue = DataFormater(Number(value));
+              const formattedName = `Orders - ${name}`;
+              return [formattedValue, formattedName];
+            }}
           />
-          <Line type="monotone" dataKey="2023" stroke="#82ca9d" />
+          <Legend iconSize={16} iconType="plainline" />
+          <Line
+            type="natural"
+            dataKey="2024"
+            stroke="#1e90ff"
+            strokeWidth={6}
+            dot={false}
+          />
+          <Line
+            type="natural"
+            strokeDasharray={"6 6 6"}
+            dot={false}
+            dataKey="2023"
+            stroke="#1e90ff"
+            strokeWidth={5}
+            opacity={0.1}
+          />
         </LineChart>
       </ResponsiveContainer>
     </div>

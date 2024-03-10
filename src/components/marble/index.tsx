@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { ChartBarIcon } from "@heroicons/react/24/outline";
 
 export const Main = () => {
+  // I'm using state variable for showing shimmer /loading effect as I'm using local data
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -19,7 +20,7 @@ export const Main = () => {
   return (
     <main className="my-6">
       <div className="my-1 flex gap-2 items-center">
-        <h1 className="page-title text-gray-700"> Sales Report</h1>
+        <h1 className="page-title text-gray-700"> Order Analysis</h1>
         <ChartBarIcon className="h-5 w-5" />
       </div>
       {isLoading ? <Shimmer /> : <Container />}
