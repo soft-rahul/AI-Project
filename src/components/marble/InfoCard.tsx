@@ -28,10 +28,10 @@ export const InfoCard = ({ label, data, isCurrency }: Props) => {
       onMouseLeave={() => {
         setShowMenu(false);
       }}
-      className="flex gap-4 grow  bg-gray-50 hover:bg-gray-200 p-4 rounded-lg group"
+      className="flex gap-4 grow  bg-gray-50 relative hover:bg-gray-200 p-4 rounded-lg group"
     >
       <div className="flex grow  flex-col gap-1">
-        <h2 className="font-semibold border-dashed border-b-2 border-gray-200 group-hover:border-gray-400">
+        <h2 className="font-semibold border-dashed border-b-2  border-gray-200 group-hover:border-gray-400">
           {label}
         </h2>
         <div className="flex gap-2">
@@ -60,6 +60,12 @@ export const InfoCard = ({ label, data, isCurrency }: Props) => {
             <Menu />
           </div>
         )}
+      </div>
+      <div className="bg-white rounded-lg  p-4 absolute z-30 top-20 left-10 shadow-lg hidden group-hover:block">
+        <h2 className="font-bold ">{label}</h2>
+        <p className="text-nowrap">
+          Your online store's traffic volume, shown in {label}.
+        </p>
       </div>
     </div>
   );
