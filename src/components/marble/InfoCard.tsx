@@ -61,12 +61,6 @@ export const InfoCard = ({ label, data, isCurrency }: Props) => {
           </div>
         )}
       </div>
-      <div className="bg-white rounded-lg  p-4 absolute z-30 top-20 left-10 shadow-lg hidden group-hover:block">
-        <h2 className="font-bold ">{label}</h2>
-        <p className="text-nowrap">
-          Your online store's traffic volume, shown in {label}.
-        </p>
-      </div>
     </div>
   );
 };
